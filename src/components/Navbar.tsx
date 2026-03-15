@@ -23,11 +23,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
           ? "bg-[rgba(4,13,31,0.95)] backdrop-blur-xl border-b border-[rgba(75,156,211,0.15)] shadow-[0_4px_30px_rgba(10,22,40,0.8)]"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -90,9 +89,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
-        } bg-[rgba(4,13,31,0.98)] border-t border-[rgba(75,156,211,0.15)]`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+          } bg-[rgba(4,13,31,0.98)] border-t border-[rgba(75,156,211,0.15)]`}
       >
         <div className="px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "none";
+@source "../../src/**/*.{ts,tsx,js,jsx}";
 
 :root {
   /* Towers Hall Brand Colors */

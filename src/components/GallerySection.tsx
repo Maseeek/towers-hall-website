@@ -1,96 +1,151 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const galleryImages = [
-  { src: "/gallery/gallery-1.png", alt: "Towers Hall exterior" },
-  { src: "/gallery/gallery-2.png", alt: "Towers Hall views" },
-  { src: "/gallery/gallery-3.png", alt: "Hall event" },
-  { src: "/gallery/gallery-4.png", alt: "Summer Ball" },
-  { src: "/gallery/gallery-5.png", alt: "Committee" },
-  { src: "/gallery/gallery-6.png", alt: "Hall social" },
+  // History
+  { src: "/gallery/history-1960s.jpg", alt: "Towers Hall (1960s)" },
+  { src: "/gallery/history-1970s.jpg", alt: "Towers Hall (1970s)" },
+  { src: "/gallery/history-1990s.jpg", alt: "Towers Bedroom (1990s)" },
+  { src: "/gallery/history-bar.jpg", alt: "Original Towers Bar" },
+  // Hall Day 2024
+  { src: "/gallery/hall-day-2024-1.jpg", alt: "Hall Day 2024" },
+  { src: "/gallery/hall-day-2024-2.jpg", alt: "Hall Day 2024" },
+  { src: "/gallery/hall-day-2024-5.jpg", alt: "Hall Day Festivities" },
+  { src: "/gallery/hall-day-2024-6.jpg", alt: "Hall Day BBQ" },
+  { src: "/gallery/hall-day-2024-7.jpg", alt: "Hall Day Games" },
+  { src: "/gallery/hall-day-2024-8.jpg", alt: "Hall Day Smiles" },
+  // Summer Ball 2024
+  { src: "/gallery/summer-ball-2024-1.jpg", alt: "Summer Ball 2024" },
+  { src: "/gallery/summer-ball-2024-2.jpg", alt: "Summer Ball 2024" },
+  { src: "/gallery/summer-ball-2024-3.jpg", alt: "Summer Ball Celebs" },
+  { src: "/gallery/summer-ball-2024-4.jpg", alt: "Summer Ball Night" },
+  { src: "/gallery/summer-ball-2024-5.jpg", alt: "Summer Ball Memories" },
+  // Additional Hall Views
+  { src: "/gallery/gallery-1.png", alt: "Towers Hall Skyline" },
+  { src: "/gallery/gallery-2.png", alt: "Hall Architecture" },
 ];
 
 export default function GallerySection() {
+  const [shuffledImages, setShuffledImages] = useState(galleryImages);
+
+  useEffect(() => {
+    // Shuffle images on client-side mount to avoid hydration mismatch
+    const shuffled = [...galleryImages].sort(() => Math.random() - 0.5);
+    setShuffledImages(shuffled);
+  }, []);
+
   return (
     <section
       id="gallery"
-      className="!py-16 lg:!py-24 w-full relative flex flex-col items-center overflow-hidden"
+      className="!py-16 lg:!py-32 w-full relative flex flex-col items-center overflow-hidden"
       style={{ scrollMarginTop: "72px" }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#071020] to-[#040d1f]" />
-      <div
-        className="absolute inset-0 opacity-15"
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse at 80% 50%, rgba(30,77,183,0.4) 0%, transparent 60%)",
-        }}
-      />
+      <div className="absolute inset-0 bg-[#071020]" />
+      
+      {/* Decorative lighting */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[var(--towers-sky)] opacity-[0.03] blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--towers-gold)] opacity-[0.03] blur-[120px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex flex-col items-center">
         {/* Header */}
-        <div className="text-center !mb-12">
+        <div className="text-center mb-20 w-full">
           <span className="towers-label text-[var(--towers-sky)] text-xs tracking-[0.25em] mb-3 block">
             Life at Towers
           </span>
-          <h2 className="towers-heading text-5xl md:text-6xl text-white mb-4">
-            The{" "}
-            <span className="gold-text">Gallery</span>
+          <h2 className="towers-heading text-5xl md:text-6xl text-white mb-6">
+            The <span className="gold-text uppercase tracking-tighter">Gallery</span>
           </h2>
-          <p className="text-white/60 max-w-xl mx-auto text-lg">
-            Snapshots of life at one of Loughborough's most iconic halls — the moments, the views, the memories.
+          <p className="text-white/60 max-w-xl mx-auto text-lg font-light leading-relaxed">
+            A living collection of moments, views, and memories from Loughborough's iconic heights.
           </p>
-          <div className="mt-6 mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-[var(--towers-gold)] to-transparent" />
+          <div className="mt-8 mx-auto w-32 h-px bg-gradient-to-r from-transparent via-[var(--towers-gold)] to-transparent opacity-50" />
         </div>
 
-        {/* Committee Poster Gallery (always visible) */}
-        <div className="mb-12">
-          <h3 className="text-center text-xs font-bold text-white/40 tracking-[0.25em] uppercase mb-8">
-            ── Hall Graphics & Media ──
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-full">
-            {[
-              { src: "/media/committee-insta-bio.png", label: "Committee 26/27" },
-              { src: "/media/insta-logo.png", label: "Towers Brand" },
-              { src: "/media/summer-ball-poster.png", label: "Summer Ball 2026" },
-              { src: "/media/committee-list.png", label: "Committee Roles" },
-              { src: "/media/highlight-thumb.png", label: "Highlights" },
-              { src: "/media/fleece-front.png", label: "Committee Fleece" },
-            ].map((item, i) => (
-              <div key={i} className="gallery-item group relative aspect-square bg-[rgba(10,22,40,0.8)] border border-[rgba(75,156,211,0.1)] rounded-xl overflow-hidden">
+        {/* Irregular "Masonry" Grid */}
+        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[150px] md:auto-rows-[200px] grid-flow-dense">
+          {shuffledImages.map((image, i) => {
+            // Logic for irregular spans
+            const isWide = (i % 7 === 1) || (i % 7 === 6);
+            const isTall = (i % 7 === 2) || (i % 7 === 4);
+            const isLarge = (i % 7 === 0);
+            
+            // Random-ish rotation for natural feel
+            const rotation = ((i * 13) % 4) - 2; // -2 to +1 degrees
+            
+            return (
+              <div
+                key={`${image.src}-${i}`}
+                style={{ transform: `rotate(${rotation}deg)` }}
+                className={`
+                  group relative overflow-hidden bg-[#0a1628] rounded-xl md:rounded-2xl border border-[rgba(75,156,211,0.08)] 
+                  hover:border-[rgba(75,156,211,0.25)] transition-all duration-500 shadow-xl hover:shadow-2xl hover:z-20 hover:scale-[1.02]
+                  ${isWide ? 'col-span-2' : 'col-span-1'} 
+                  ${isTall ? 'row-span-2' : 'row-span-1'} 
+                  ${isLarge ? 'col-span-2 row-span-2' : ''}
+                `}
+              >
                 <Image
-                  src={item.src}
-                  alt={item.label}
+                  src={image.src}
+                  alt={image.alt}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100 grayscale-[20%] group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,22,40,0.9)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white font-bold text-sm">{item.label}</span>
+                
+                {/* Overlay with details */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071020]/90 via-[#071020]/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-5 md:p-8">
+                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500 w-full">
+                    <div className="flex items-center gap-2 mb-2">
+                       <div className="w-6 h-px bg-[var(--towers-gold)]" />
+                       <span className="text-[var(--towers-gold)] text-[10px] tracking-widest uppercase font-bold">Captured</span>
+                    </div>
+                    <span className="text-white text-base md:text-xl font-medium block truncate pr-4">{image.alt}</span>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
-        {/* Upload CTA */}
-        <div className="glass-card text-center p-10 rounded-2xl border border-[rgba(75,156,211,0.15)]">
-          <div className="text-4xl mb-4">📸</div>
-          <h3 className="towers-heading text-2xl text-white mb-3">Got photos to share?</h3>
-          <p className="text-white/50 mb-6 max-w-sm mx-auto text-sm leading-relaxed">
-            The gallery is growing — follow Towers on Instagram to see the latest from around the hall.
+        {/* Upload CTA - With a more natural floating feel */}
+        <div className="w-full mt-32 text-center max-w-2xl relative">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-[var(--towers-sky)] opacity-[0.05] blur-3xl pointer-events-none" />
+          
+          <div className="w-20 h-20 bg-[rgba(75,156,211,0.05)] rounded-full flex items-center justify-center mx-auto mb-8 border border-[rgba(75,156,211,0.15)] shadow-inner">
+             <span className="text-4xl filter drop-shadow-md">📸</span>
+          </div>
+          
+          <h3 className="towers-heading text-3xl md:text-4xl text-white mb-6">
+            Add to the <span className="gold-text">Archive</span>
+          </h3>
+          <p className="text-white/50 mb-10 text-lg leading-relaxed font-light">
+            Every generation leaves its mark. Tag us in your photos or follow our journey through the seasons.
           </p>
+          
           <a
             href="https://www.instagram.com/towershall/"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary px-8 py-3 rounded-full font-bold inline-flex items-center gap-2"
+            className="group relative px-12 py-4 bg-transparent text-white font-bold inline-flex items-center gap-4 overflow-hidden rounded-full border border-white/10 hover:border-[var(--towers-gold)] transition-colors duration-500"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--towers-gold)] to-[#ff8c00] opacity-0 group-hover:opacity-10 transition-opacity" />
+            
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="group-hover:rotate-12 transition-transform duration-500 text-[var(--towers-gold)]"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
             </svg>
-            @towershall
+            <span className="tracking-wide">Follow @towershall</span>
           </a>
         </div>
       </div>

@@ -27,8 +27,8 @@ const timelineItems = [
     title: "Towers Hall is Born",
     content:
       "Towers Hall opens its doors as part of Loughborough University's post-war expansion. The twin towers become an immediate campus landmark, and the first-ever floor plan (1967) maps out the hall that generations of students would call home.",
-    photo: "/history/1964.jpg",
-    photoAlt: "Towers Hall, 1964",
+    photo: "/history/0) Towers Floorplan 1967.JPG",
+    photoAlt: "Original Towers Floorplan, 1967",
     side: "left",
   },
   {
@@ -36,26 +36,26 @@ const timelineItems = [
     title: "Community Takes Root",
     content:
       "The dining hall becomes the beating heart of hall life — a place where friendships are forged and traditions begin. The dedicated kitchen and dining staff preside over three squares a day for hundreds of residents.",
-    photo: "/history/Dining Staff 1970s.JPG",
-    photoAlt: "Dining staff in the 1970s",
+    photo: "/history/Original Dining Hall.JPG",
+    photoAlt: "The Original Dining Hall, 1970s",
     side: "right",
   },
   {
     decade: "1980s",
     title: "The Tiger Earns Its Stripes",
     content:
-      "The Towers white tiger mascot becomes firmly embedded in the hall's identity — a symbol of pride, strength, and community spirit. The Towers Bar dancefloor witnesses legendary nights that students talk about for decades.",
-    photo: "/history/Towers Bar Dancefloor.JPG",
-    photoAlt: "Towers Bar dance floor",
+      "The Towers white tiger mascot becomes firmly embedded in the hall's identity — a symbol of pride, strength, and community spirit. The Towers Bar becomes the focal point for hall socials and legendary tower-inspired events.",
+    photo: "/history/1985.jpg",
+    photoAlt: "Towers Hall in 1985",
     side: "left",
   },
   {
     decade: "1990s",
     title: "A Vibrant Social Hub",
     content:
-      "The Towers Bar is at its peak — a proper student pub with character. Bedroom walls are adorned with posters, and Towers continues to attract students who want more than just a room: they want a community.",
-    photo: "/history/Towers Bedroom 1990s.jpg",
-    photoAlt: "Student bedroom in the 1990s",
+      "The Towers Bar is at its peak — a proper student hub with character. The dancefloor witnesses legendary nights that students talk about for decades, cementing the hall's reputation as the place to be on campus.",
+    photo: "/history/Towers Bar Dancefloor.JPG",
+    photoAlt: "Towers Bar Dancefloor",
     side: "right",
   },
   {
@@ -82,7 +82,7 @@ const timelineItems = [
     content:
       "Towers Hall celebrates its 60th anniversary with a special commemorative logo. The 2026/27 committee takes the helm — led by Hall Chair Ciaran 'Ryu' Nishimura-Harrison — carrying forward six decades of pride.",
     photo: "/history/2017-2018.PNG",
-    photoAlt: "Committee 2017–18",
+    photoAlt: "Hall Committee",
     side: "left",
   },
 ];

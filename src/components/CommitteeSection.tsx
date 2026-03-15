@@ -165,7 +165,7 @@ export default function CommitteeSection() {
       : COMMITTEE_ROLES.filter((r) => r.category === activeCategory);
 
   return (
-    <section id="committee" className="py-24 relative overflow-hidden">
+    <section id="committee" className="!py-16 lg:!py-24 relative overflow-hidden w-full flex flex-col items-center">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#040d1f] via-[#060f22] to-[#040d1f]" />
       <div
@@ -176,9 +176,9 @@ export default function CommitteeSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center !mb-24">
           <span className="towers-label text-[var(--towers-gold)] text-xs tracking-[0.25em] mb-3 block">
             Meet the Team
           </span>
@@ -193,12 +193,12 @@ export default function CommitteeSection() {
         </div>
 
         {/* Category filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 active:scale-95 ${
                 activeCategory === cat
                   ? "bg-[var(--towers-blue)] text-white shadow-lg"
                   : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10"
@@ -210,12 +210,12 @@ export default function CommitteeSection() {
         </div>
 
         {/* Role grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filtered.map((role) => (
             <button
               key={role.id}
               onClick={() => setSelectedRole(role)}
-              className="group text-left glass-card rounded-2xl p-6 border border-[rgba(75,156,211,0.08)] hover:border-[rgba(75,156,211,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(75,156,211,0.15)]"
+              className="group text-left glass-card rounded-2xl p-6 border border-[rgba(75,156,211,0.08)] hover:border-[rgba(75,156,211,0.3)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_20px_60px_rgba(75,156,211,0.15)] active:scale-[0.98] active:brightness-90 flex flex-col h-full"
             >
               {/* Top row */}
               <div className="flex items-start justify-between mb-4">
@@ -230,7 +230,7 @@ export default function CommitteeSection() {
               {/* Role name */}
               <div className="mb-1">
                 <div className="text-[10px] text-[var(--towers-gold)] tracking-[0.2em] uppercase mb-1">{role.category}</div>
-                <h3 className="towers-heading text-white text-lg leading-tight">{role.title}</h3>
+                <h3 className="towers-heading text-white text-xl leading-tight font-black">{role.title}</h3>
               </div>
 
               {/* Description */}
@@ -251,7 +251,7 @@ export default function CommitteeSection() {
               </div>
 
               {/* CTA */}
-              <div className="flex items-center gap-2 text-[var(--towers-sky)] text-xs font-semibold group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-[var(--towers-sky)] text-xs font-bold group-hover:gap-3 transition-all mt-auto">
                 <span>View profiles</span>
                 <span className="opacity-60 group-hover:opacity-100 transition-opacity">→</span>
               </div>

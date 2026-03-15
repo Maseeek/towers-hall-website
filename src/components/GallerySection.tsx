@@ -13,7 +13,11 @@ const galleryImages = [
 
 export default function GallerySection() {
   return (
-    <section id="gallery" className="py-24 relative">
+    <section
+      id="gallery"
+      className="!py-16 lg:!py-24 w-full relative flex flex-col items-center overflow-hidden"
+      style={{ scrollMarginTop: "72px" }}
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-[#071020] to-[#040d1f]" />
       <div
         className="absolute inset-0 opacity-15"
@@ -23,9 +27,9 @@ export default function GallerySection() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center !mb-12">
           <span className="towers-label text-[var(--towers-sky)] text-xs tracking-[0.25em] mb-3 block">
             Life at Towers
           </span>
@@ -44,7 +48,7 @@ export default function GallerySection() {
           <h3 className="text-center text-xs font-bold text-white/40 tracking-[0.25em] uppercase mb-8">
             ── Hall Graphics & Media ──
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-full">
             {[
               { src: "/media/committee-insta-bio.png", label: "Committee 26/27" },
               { src: "/media/insta-logo.png", label: "Towers Brand" },

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 hero-gradient" />
 
@@ -32,10 +32,10 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto w-full">
         {/* Logo */}
-        <div className="flex justify-center mb-10 animate-fadeInUp">
-          <div className="relative w-40 h-40 animate-float">
+        <div className="flex justify-center mb-6 animate-fadeInUp">
+          <div className="relative w-28 h-28 animate-float">
             <Image
               src="/images/towers-logo.png"
               alt="Towers Hall Logo"
@@ -48,11 +48,11 @@ export default function HeroSection() {
 
         {/* Title */}
         <div className="animate-fadeInUp delay-100">
-          <div className="towers-label text-[var(--towers-sky)] text-sm tracking-[0.4em] mb-4">
+          <div className="towers-label text-[var(--towers-sky)] text-[11px] tracking-[0.3em] mb-4 opacity-80">
             Loughborough University
           </div>
           <h1
-            className="text-7xl md:text-9xl lg:text-[10rem] text-white mb-4"
+            className="text-7xl md:text-9xl lg:text-[10rem] text-white mb-2"
             style={{
               fontWeight: 900,
               letterSpacing: "-0.02em",
@@ -62,31 +62,31 @@ export default function HeroSection() {
           >
             TOWERS
           </h1>
-          <div className="towers-label text-[var(--towers-gold)] text-sm tracking-[0.6em] mt-2">
+          <div className="towers-label text-[var(--towers-gold)] text-sm tracking-[0.6em] mt-4">
             HALL — EST. 1965
           </div>
         </div>
 
         {/* Tagline */}
         <p
-          className="text-white/60 text-xl md:text-2xl mt-8 mb-12 max-w-2xl mx-auto leading-relaxed animate-fadeInUp delay-200"
+          className="text-white/60 text-lg md:text-xl mt-6 mb-8 max-w-2xl mx-auto leading-relaxed animate-fadeInUp delay-200 text-center"
           style={{ fontStyle: "italic" }}
         >
           One of the biggest halls on campus — with hands down the best views 🌅
         </p>
 
         {/* CTA buttons */}
-        <div className="flex flex-wrap justify-center gap-4 animate-fadeInUp delay-300">
-          <a href="#events" className="btn-gold px-8 py-4 rounded-full font-bold text-base inline-flex items-center gap-2">
+        <div className="flex flex-wrap justify-center items-center gap-5 animate-fadeInUp delay-300 w-full">
+          <a href="#events" className="btn-gold !px-8 !py-4 rounded-full font-bold text-base inline-flex items-center gap-2 active:scale-95">
             🎟 Upcoming Events
           </a>
-          <a href="#committee" className="btn-primary px-8 py-4 rounded-full font-bold text-base inline-flex items-center gap-2">
+          <a href="#committee" className="btn-primary !px-8 !py-4 rounded-full font-bold text-base inline-flex items-center gap-2 active:scale-95">
             Meet the Committee
           </a>
         </div>
 
         {/* Stats bar */}
-        <div className="mt-20 flex flex-wrap justify-center gap-12 animate-fadeInUp delay-400">
+        <div className="mt-10 flex flex-wrap justify-center gap-10 animate-fadeInUp delay-400">
           {[
             { value: "60+", label: "Years of History" },
             { value: "100s", label: "Residents" },

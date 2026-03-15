@@ -28,16 +28,21 @@
   --color-towers-gold: var(--towers-gold);
   --color-towers-gold-light: var(--towers-gold-light);
   --color-towers-muted: var(--towers-muted);
+
+  /* Explicitly define spacing to ensure compiler doesn't miss them */
+  --spacing-32: 8rem;
+  --spacing-24: 6rem;
+  --spacing-20: 5rem;
+  --spacing-16: 4rem;
+  --spacing-12: 3rem;
+  --spacing-10: 2.5rem;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Standard Tailwind Preflight handles the base reset.
+   Manual * reset removed to avoid overriding utilities. */
 html {
   scroll-behavior: smooth;
+  font-size: 16px; /* Explicitly set base font-size to ensure 1rem = 16px */
 }
 
 body {
@@ -102,6 +107,7 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(75, 156, 211, 0.2);
   border-radius: 16px;
+  padding: 1.5rem;
 }
 
 .glass-card-dark {
@@ -110,6 +116,7 @@ body {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(75, 156, 211, 0.15);
   border-radius: 16px;
+  padding: 1.5rem;
 }
 
 /* Animated gradient background */
@@ -133,18 +140,33 @@ body {
 }
 
 /* Button styles */
+button,
+[role="button"],
+a,
+.cursor-pointer {
+  cursor: pointer;
+}
+
+button:active,
+[role="button"]:active,
+a:active {
+  transform: scale(0.98);
+}
+
 .btn-primary {
-  padding: 0.5rem 1rem;
+  padding: 0.875rem 2.25rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   line-height: 1;
   white-space: nowrap;
   background: linear-gradient(135deg, var(--towers-royal) 0%, var(--towers-blue) 100%);
   color: white;
   border: 1px solid rgba(75, 156, 211, 0.3);
   transition: all 0.3s ease;
+  font-weight: 600;
+  border-radius: 2rem;
 }
 
 .btn-primary:hover {
@@ -154,17 +176,18 @@ body {
 }
 
 .btn-gold {
-  padding: 0.5rem 1rem;
+  padding: 0.875rem 2.25rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   line-height: 1;
   white-space: nowrap;
   background: linear-gradient(135deg, var(--towers-gold) 0%, var(--towers-gold-light) 100%);
   color: var(--towers-navy);
   font-weight: 700;
   transition: all 0.3s ease;
+  border-radius: 2rem;
 }
 
 .btn-gold:hover {
@@ -176,7 +199,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  padding: 0.875rem 2.25rem;
   line-height: 1;
   white-space: nowrap;
   background: transparent;
@@ -184,6 +208,7 @@ body {
   border: 1px solid rgba(75, 156, 211, 0.35);
   font-weight: 600;
   transition: all 0.3s ease;
+  border-radius: 2rem;
 }
 
 .btn-outline:hover {
@@ -369,4 +394,91 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   background: rgba(4, 13, 31, 0.85);
+}
+
+/* ─── Towers Archive ─── */
+
+/* Sepia archive photo with hover-to-colour */
+.archive-photo {
+  filter: sepia(0.55) contrast(1.08) brightness(0.92);
+  transition: filter 0.6s ease, transform 0.4s ease;
+}
+
+.archive-photo:hover {
+  filter: sepia(0) contrast(1) brightness(1);
+  transform: scale(1.03);
+}
+
+/* Horizontal photo strip */
+.photo-strip {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll-strip 40s linear infinite;
+}
+
+.photo-strip:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-strip {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Decade badge */
+.decade-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--towers-gold);
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 9999px;
+  padding: 0.2rem 0.75rem;
+}
+
+/* Archive card — warm tinted glass */
+.archive-card {
+  background: rgba(20, 14, 5, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.archive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 25px rgba(201,168,76,0.08);
+}
+
+/* Vintage corner marks on archive photo frames */
+.archive-frame {
+  position: relative;
+  display: inline-block;
+}
+
+.archive-frame::before,
+.archive-frame::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: rgba(201,168,76,0.5);
+  border-style: solid;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.archive-frame::before {
+  top: 6px; left: 6px;
+  border-width: 2px 0 0 2px;
+}
+
+.archive-frame::after {
+  bottom: 6px; right: 6px;
+  border-width: 0 2px 2px 0;
 }

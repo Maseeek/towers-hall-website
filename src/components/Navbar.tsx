@@ -23,12 +23,12 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex justify-center ${scrolled
           ? "bg-[rgba(4,13,31,0.95)] backdrop-blur-xl border-b border-[rgba(75,156,211,0.15)] shadow-[0_4px_30px_rgba(10,22,40,0.8)]"
           : "bg-transparent"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="w-full max-w-7xl px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[rgba(75,156,211,0.4)] group-hover:border-[var(--towers-gold)] transition-all duration-300">
@@ -57,15 +57,15 @@ export default function Navbar() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link text-sm font-semibold tracking-wide">
+            <a key={link.href} href={link.href} className="nav-link text-sm font-semibold tracking-wide active:scale-95 transition-transform">
               {link.label}
             </a>
           ))}
           <a
             href="#events"
-            className="btn-gold px-5 py-2 rounded-full text-sm font-bold tracking-wide"
+            className="btn-gold !px-6 !py-2.5 rounded-full text-sm font-bold tracking-wide active:scale-95"
           >
-            🎟 Get Tickets
+            <span className="inline-block translate-y-[-1px]">🎟</span> Get Tickets
           </a>
         </div>
 
@@ -105,10 +105,10 @@ export default function Navbar() {
           ))}
           <a
             href="#events"
-            className="btn-gold px-5 py-2 rounded-full text-sm font-bold text-center"
+            className="btn-gold !px-6 !py-2.5 rounded-full text-sm font-bold text-center"
             onClick={() => setMenuOpen(false)}
           >
-            🎟 Get Tickets
+            <span className="inline-block translate-y-[-1px]">🎟</span> Get Tickets
           </a>
         </div>
       </div>

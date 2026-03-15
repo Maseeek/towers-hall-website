@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-[rgba(75,156,211,0.1)] bg-[#040d1f] py-16 px-6">
-      <div className="max-w-7xl mx-auto">
+    <footer className="relative border-t border-[rgba(75,156,211,0.1)] bg-[#040d1f] py-16 px-6 w-full flex justify-center">
+      <div className="w-full max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
           {/* Brand */}
           <div className="max-w-sm">

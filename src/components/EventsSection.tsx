@@ -54,7 +54,7 @@ export default function EventsSection() {
   return (
     <section
       id="events"
-      className="py-28 relative"
+      className="!py-16 lg:!py-24 relative w-full flex flex-col items-center"
       style={{ scrollMarginTop: "72px" }}
     >
       {/* Background */}
@@ -67,9 +67,9 @@ export default function EventsSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-8">
+      <div className="relative z-10 max-w-5xl mx-auto px-8 flex flex-col items-center">
         {/* Section Header — centred */}
-        <div className="text-center mb-16">
+        <div className="text-center !mb-24">
           <span className="towers-label text-[var(--towers-gold)] text-xs tracking-[0.25em] mb-4 block">
             What&apos;s On
           </span>
@@ -83,14 +83,14 @@ export default function EventsSection() {
         </div>
 
         {/* ── Featured Event ── */}
-        <div className="mb-8">
+        <div className="mb-12">
           <div className="glass-card-dark rounded-2xl overflow-hidden border border-[rgba(201,168,76,0.2)] event-card relative">
             {/* Gold top accent */}
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[var(--towers-gold)] via-[var(--towers-gold-light)] to-[var(--towers-gold)]" />
 
             <div className="flex flex-col md:flex-row">
               {/* Poster */}
-              <div className="md:w-72 lg:w-80 flex-shrink-0 relative min-h-[280px]">
+              <div className="md:w-72 lg:w-80 flex-shrink-0 relative min-h-[280px] rounded-2xl md:rounded-r-none overflow-hidden">
                 <Image
                   src="/events/summer-ball.png"
                   alt="Towers Summer Ball 2026"
@@ -148,18 +148,22 @@ export default function EventsSection() {
 
                 {/* CTAs — generous padding */}
                 <div className="flex flex-wrap gap-4 pt-2">
-                  <a
-                    href="#"
-                    className="btn-gold px-8 py-4 rounded-full font-bold text-sm"
-                  >
-                    🎟&nbsp; Get Tickets
-                    <span className="opacity-65 ml-1 text-xs font-normal">(On sale 16 Mar)</span>
-                  </a>
+                  <div className="flex flex-col gap-2">
+                    <a
+                      href="#"
+                      className="btn-gold !px-10 !py-5 rounded-full font-bold text-sm"
+                    >
+                      <span className="inline-block translate-y-[-1px]">🎟</span>&nbsp; Get Tickets
+                    </a>
+                    <span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold ml-4">
+                      On sale 16 Mar
+                    </span>
+                  </div>
                   <a
                     href="https://www.instagram.com/towershall/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary px-8 py-4 rounded-full font-bold text-sm"
+                    className="btn-primary !px-10 !py-5 rounded-full font-bold text-sm"
                   >
                     📣&nbsp; Follow Updates
                   </a>
@@ -170,7 +174,7 @@ export default function EventsSection() {
         </div>
 
         {/* ── Smaller events grid ── */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 !gap-12 w-full">
           {events.slice(1).map((event) => (
             <div
               key={event.id}
@@ -221,7 +225,7 @@ export default function EventsSection() {
                   {event.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-white/50 border border-white/10 bg-white/[0.03]"
+                      className="px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-white/50 border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-colors"
                     >
                       {tag}
                     </span>
@@ -233,7 +237,7 @@ export default function EventsSection() {
         </div>
 
         {/* ── Instagram CTA ── */}
-        <div className="text-center mt-14 pt-8 border-t border-white/[0.06]">
+        <div className="text-center mt-12 pt-6 border-t border-white/[0.06]">
           <p className="text-white/35 text-sm mb-3">Stay up to date with all events</p>
           <a
             href="https://www.instagram.com/towershall/"

@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Towers Hall website
 
-## Getting Started
+A one-page website for Towers Hall, a student hall of residence at Loughborough University. Residents and freshers can use it to find hall events, meet the student committee and read about the hall's history.
 
-First, run the development server:
+Live site: https://towers-hall.vercel.app
+
+## What it does
+
+- Lists upcoming hall events with dates, times and venues. The Summer Ball is the featured event.
+- Shows all 13 committee roles as cards you can filter by category, such as Leadership, Welfare or Fundraising. Clicking a role opens a detail view with each member's poster.
+- Has a photo gallery that shuffles its order on every visit and links to the hall's Instagram.
+- Tells the hall's story from 1964 to today with a scrolling strip of archive photos and a decade-by-decade timeline.
+- Opens any history photo in a full-screen lightbox that closes with Escape.
+- Works on phones, with a collapsible navbar that changes style once you scroll.
+
+## How it's built
+
+- Next.js 16 (App Router), React 19 and TypeScript, styled with Tailwind CSS 4. Icons come from lucide-react.
+- The page is split into section components (`Hero`, `Events`, `Committee`, `Gallery`, `History`, `Footer`) under `src/components`, so each part can change on its own.
+- Committee data lives in a typed file, `src/data/committee.ts`. Adding a new member or role means editing that file, not the UI code.
+- The gallery shuffle runs in a `useEffect` after the page loads. This stops the server and browser from rendering a different order and causing a React hydration mismatch.
+- Images go through `next/image`, and archive photos sit in `public/history`.
+
+## Run it locally
+
+You need Node.js and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open http://localhost:3000. Use `npm run build` and `npm start` for a production build, and `npm run lint` to run ESLint.
